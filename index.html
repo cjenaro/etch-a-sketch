@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Etch a Sketch</title>
+  </head>
+  <body>
+    <style>
+      body {
+        min-height: 100vh;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        background-image: url('./cool-background.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      canvas {
+        width: 800px;
+        height: 500px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        border: 5px solid #222222;
+      }
+
+      .shaking {
+        animation: shake 0.7s linear;
+      }
+
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0) rotateZ(-1deg);
+        }
+
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0) rotateZ(2deg);
+        }
+
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0) rotateZ(-4deg);
+        }
+
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0) rotateZ(4deg);
+        }
+      }
+
+      .shake {
+        padding: 15px 30px;
+        border: 1px solid #222222;
+        color: #222222;
+        background-color: #ffffff;
+        transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+      }
+
+      .shake:hover {
+        background-color: #222222;
+        color: #ffffff;
+      }
+
+      .buttons {
+        display: flex;
+      }
+
+      .buttons > * {
+        margin: 0 10px;
+      }
+
+      fieldset,
+      legend {
+        background: #ffffff;
+        border: 1px solid #222222;
+      }
+
+      legend {
+        box-shadow: 1px 1px 0px 2px #222222;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+    </style>
+
+    <div class="canvas-wrap">
+      <canvas width="1600" height="1000" id="etch-a-sketch"></canvas>
+      <div class="buttons">
+        <button class="shake">Shake!</button>
+        <fieldset>
+          <legend>Stroke</legend>
+          <input type="number" name="stroke" id="stroke" />
+        </fieldset>
+        <fieldset>
+          <legend>Speed</legend>
+          <input type="number" name="speed" id="speed" />
+        </fieldset>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
